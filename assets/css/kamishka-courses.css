@@ -18,3 +18,19 @@
 
 @media (max-width:1100px){ .kmk-grid{ grid-template-columns: repeat(2,1fr); } }
 @media (max-width:720px){ .kmk-grid{ grid-template-columns: 1fr; } .kmk-search{ min-width:200px; } }
+
+/* KMK Animations: added for courses page */
+
+/* KMK Animations: fade-in-up for cards and hover scale for buttons */
+.kmk-card{ opacity:0; transform: translateY(10px); animation: kmk-fade-up 520ms ease forwards; }
+.kmk-card:nth-child(1){ animation-delay: 60ms; }
+.kmk-card:nth-child(2){ animation-delay: 120ms; }
+.kmk-card:nth-child(3){ animation-delay: 180ms; }
+.kmk-card:nth-child(4){ animation-delay: 240ms; }
+@keyframes kmk-fade-up{
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* Button hover interactive */
+.kmk-btn:hover, .kmk-btn:focus{ transform: translateY(-3px) scale(1.02); transition: transform 180ms cubic-bezier(.2,.9,.2,1); }
+.kmk-btn.primary:hover{ box-shadow: 0 14px 32px rgba(0,0,0,0.18); }
