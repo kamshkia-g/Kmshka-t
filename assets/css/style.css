@@ -111,3 +111,13 @@ body{ padding-top:86px !important; } /* ensure content not hidden behind fixed n
 body { padding-top: 64px !important; }
 .site-main, main, .hero, .kmk-courses-hero { margin-top: 0 !important; padding-top: 12px !important; }
 .kmk-navbar{ height: 64px !important; }
+
+
+/* KMK FINAL FIX: force compact top spacing */
+
+/* KMK FINAL FIX: force compact top spacing and fixed header */
+.kmk-navbar, header.kmk-navbar, header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; height: 64px !important; z-index: 99999 !important; background: rgba(255,255,255,0.03) !important; backdrop-filter: blur(8px) !important; }
+body { padding-top: 64px !important; }
+.site-main, main, .hero, .kmk-courses-hero { margin-top: 0 !important; padding-top: 8px !important; }
+header + * { margin-top: 0 !important; }
+.kmk-page-overlay, .kmk-loader-overlay { top: 64px !important; }
