@@ -60,3 +60,32 @@ document.addEventListener('DOMContentLoaded', ()=>{
   bar.addEventListener('click', inc);
   bar.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); inc(); } });
 })();
+
+
+/* KMK helper additions */
+
+/* KMK helper: show current Gregorian and Hijri date in elements with .kmk-date and .kmk-hijri */
+(function(){
+  function pad(n){ return n<10? '0'+n: n; }
+  function toHijri(d){
+    // Simple approximate conversion for display (not authoritative) - using Umm al-Qura not possible offline
+    // We'll use a rough algorithm (Arithmetical) for placeholder: not for legal use.
+    var jd = Math.floor((d/86400000) - Math.floor((d.getTimezoneOffset()/60)/24) + 2440587.5); // not exact
+    // fallback: show Islamic year/month/day from Intl if available
+    try{
+      var hij = new Intl.DateTimeFormat('ar-SA-u-ca-islamic', { day:'numeric', month:'long', year:'numeric' }).format(d);
+      return hij;
+    }catch(e){
+      return ''; 
+    }
+  }
+  function updateDates(){
+    var els = document.querySelectorAll('.kmk-date');
+    var d = new Date();
+    els.forEach(function(el){
+      el.textContent = d.toLocaleDateString('en-GB', { year:'numeric', month:'long', day:'numeric' }) + ' — ' + toHijri(d);
+    });
+  }
+  window.addEventListener('load', updateDates);
+  setInterval(updateDates, 60*60*1000);
+})();

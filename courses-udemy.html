@@ -1,30 +1,10 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>الرئيسية - موقع كمشكاة</title>
-  <link rel="icon" href="assets/images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>كورسات يوديمي - كمشكاة</title>
   <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- kmk-inline-navbar-style -->
-    <style>
-
-/* INLINE OVERRIDE: force glassy navbar */
-.kmk-navbar{ background: rgba(255,255,255,0.02) !important; backdrop-filter: blur(14px) !important; -webkit-backdrop-filter: blur(14px) !important; z-index: 999999 !important; box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important; }
-.kmk-pill{ background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)) !important; }
-header, .site-header, .kmk-navbar, .kmk-pill{ background-color: transparent !important; }
-body > *:not(header){ margin-top: 76px !important; } /* ensure content not overlapped */
-
-    </style>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <header class="kmk-navbar" role="banner">
@@ -46,26 +26,50 @@ body > *:not(header){ margin-top: 76px !important; } /* ensure content not overl
     </nav>
   </div>
 </header>
-
-
-
-
-
-  <!-- reuse navbar by including header insertion already present in other pages -->
-  <main class="site-main">
-    <section class="kmk-courses-hero">
-      <h1>كورسات يوديمي</h1>
-      <div class="kmk-search-row">
-        <input id="kmk-search" class="kmk-search" placeholder="اكتب اسم الكورس بالعربي أو الإنجليزي...">
-        <div class="kmk-filters"></div>
+<main class="site-main">
+  <section class="kmk-courses-hero">
+    <div class="kmk-date-row"><span class="kmk-date">...</span></div>
+    <div class="kmk-search-row">
+      <input id="kmk-search" class="kmk-search" placeholder="ابحث عن كورس...">
+      <div class="kmk-filters" aria-hidden="true">
+        <button class="kmk-filter-btn">تصميم</button>
+        <button class="kmk-filter-btn">برمجة</button>
+        <button class="kmk-filter-btn">تسويق</button>
       </div>
-      <div class="kmk-grid" aria-live="polite"></div>
-      <div style="text-align:center; margin-top:20px;">
-        <button id="kmk-loadmore" class="kmk-btn">اعرض المزيد</button>
-        <div id="kmk-no-more" style="display:none; margin-top:10px; color:rgba(0,0,0,0.56)">لا يوجد المزيد</div>
-      </div>
-    </section>
-  </main>
+    </div>
+    <div class="kmk-grid" aria-live="polite">
+      <!-- Placeholder cards -->
+      <article class="kmk-card">
+        <div><div class="title-en">Course Title EN</div><div class="title-ar">اسم الكورس بالعربي</div></div>
+        <div class="actions">
+          <button class="kmk-btn">شارك الكورس</button>
+          <button class="kmk-btn">انسخ الكود</button>
+          <button class="kmk-btn primary">اذهب للكورس</button>
+        </div>
+      </article>
+      <article class="kmk-card">
+        <div><div class="title-en">Course Title EN</div><div class="title-ar">اسم الكورس بالعربي</div></div>
+        <div class="actions">
+          <button class="kmk-btn">شارك الكورس</button>
+          <button class="kmk-btn">انسخ الكود</button>
+          <button class="kmk-btn primary">اذهب للكورس</button>
+        </div>
+      </article>
+      <article class="kmk-card">
+        <div><div class="title-en">Course Title EN</div><div class="title-ar">اسم الكورس بالعربي</div></div>
+        <div class="actions">
+          <button class="kmk-btn">شارك الكورس</button>
+          <button class="kmk-btn">انسخ الكود</button>
+          <button class="kmk-btn primary">اذهب للكورس</button>
+        </div>
+      </article>
+    </div>
+    <div class="kmk-loadmore-wrap">
+      <button id="kmk-loadmore" class="kmk-btn">اعرض المزيد</button>
+    </div>
+  </section>
+</main>
+</main>
 
 <footer class="site-footer">© 2025 كمشكاة — جميع الحقوق محفوظة</footer>
 
@@ -75,10 +79,8 @@ body > *:not(header){ margin-top: 76px !important; } /* ensure content not overl
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
-</body>
-</html>
 
-  </main>
+
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
