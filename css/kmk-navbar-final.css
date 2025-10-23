@@ -1,0 +1,5 @@
+/* Final override to ensure true glassy navbar */
+.kmk-navbar{ z-index:99999 !important; background: rgba(255,255,255,0.03) !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
+.kmk-pill{ background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)) !important; }
+.kmk-navbar.scrolled{ background: rgba(82,131,95,0.94) !important; }
+header[style], .site-header[style]{ background: transparent !important; }

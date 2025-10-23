@@ -1,0 +1,108 @@
+/* Kamishka - Glass Centered Navbar */
+:root{
+  --kmk-primary-1: #52835f;
+  --kmk-accent: #00a56c;
+  --kmk-text: #ffffff;
+}
+
+/* Base navbar */
+.kmk-navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  background: transparent;
+  transition: height 240ms ease, background-color 240ms ease, box-shadow 240ms ease;
+  pointer-events: auto;
+}
+
+/* container centers nav while allowing brand/hamburger absolute positioning */
+.kmk-container{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Brand on the right */
+.kmk-brand{
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.kmk-logo{ height:42px; display:block; }
+
+/* Hamburger on the left (mobile) */
+.kmk-hamburger{
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+.kmk-hamburger span{ display:block; height:3px; width:24px; border-radius:3px; background:var(--kmk-text); margin:4px 0; }
+
+/* Center pill nav */
+.kmk-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: background 240ms ease, transform 240ms ease;
+}
+.kmk-pill .kmk-nav-list{ display:flex; gap:18px; list-style:none; margin:0; padding:0; direction: rtl; align-items:center; }
+.kmk-pill .kmk-nav-list a{
+  color:var(--kmk-text);
+  text-decoration:none;
+  font-family:'Rubik',sans-serif;
+  font-weight:500;
+  padding:8px 10px;
+  border-radius:8px;
+  transition: transform 160ms ease, color 160ms ease, background 160ms ease;
+}
+.kmk-pill .kmk-nav-list a:hover,
+.kmk-pill .kmk-nav-list a:focus{
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.04);
+  color: var(--kmk-text);
+  outline: none;
+}
+
+/* Scrolled state: smaller navbar and darker pill */
+.kmk-navbar.scrolled{ height:56px; box-shadow: 0 8px 28px rgba(0,0,0,0.22); }
+.kmk-navbar.scrolled .kmk-pill{ background: rgba(82,131,95,0.96); box-shadow: 0 8px 26px rgba(0,0,0,0.28); }
+
+/* Responsive */
+@media (max-width: 880px){
+  .kmk-hamburger{ display:flex; }
+  .kmk-pill{ display:none; } /* hide pill on small screens */
+  .kmk-brand{ right: 14px; }
+}
+
+/* Accessibility focus */
+.kmk-pill .kmk-nav-list a:focus{ outline:3px solid rgba(255,255,255,0.12); outline-offset:3px; }

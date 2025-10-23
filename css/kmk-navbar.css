@@ -1,0 +1,19 @@
+:root{--kmk-primary-1:#52835f;--kmk-primary-2:#006d4f;--kmk-primary-3:#004a33;--kmk-text:#fff}.kmk-navbar{position:fixed;top:0;width:100%;background:transparent;z-index:9999}
+
+
+/* Center navbar navigation while keeping brand on the right and hamburger on the left */
+.kmk-container{ position: relative; display: flex; align-items: center; justify-content: center; padding:12px 20px; }
+.kmk-nav{ position: absolute; left:50%; transform: translateX(-50%); top:50%; transform: translate(-50%, -50%); }
+.kmk-brand{ position: absolute; right: 20px; top: 50%; transform: translateY(-50%); }
+.kmk-hamburger{ position: absolute; left: 18px; top: 50%; transform: translateY(-50%); }
+/* ensure desktop nav displays centered */
+@media (min-width: 881px){
+  .kmk-nav{ display:block; }
+  .kmk-hamburger{ display:none; }
+}
+/* keep mobile behavior */
+@media (max-width: 880px){
+  .kmk-nav{ display:none; position: static; transform: none; left: auto; }
+  .kmk-hamburger{ display:flex; }
+  .kmk-brand{ right: 14px; }
+}

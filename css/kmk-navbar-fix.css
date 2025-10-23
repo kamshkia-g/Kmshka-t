@@ -1,0 +1,16 @@
+/* FINAL FIX: force centered pill navbar and hide duplicated navs */
+.kmk-container{ position: relative; display: flex; align-items: center; justify-content: center !important; }
+.kmk-pill{ position: relative; left: 0; transform: none; display: inline-flex !important; margin: 0 auto !important; }
+.kmk-nav-list{ display: flex !important; gap: 18px !important; list-style: none !important; margin: 0 !important; padding: 0 !important; direction: rtl; }
+.kmk-brand{ position: absolute; right: 18px; top: 50%; transform: translateY(-50%); }
+.kmk-hamburger{ position: absolute; left: 14px; top: 50%; transform: translateY(-50%); }
+/* Hide any other nav elements inside header that are not the pill */
+.kmk-navbar nav:not(.kmk-nav){ display: none !important; }
+.kmk-navbar .extra-nav, .kmk-navbar .nav-right, .nav--right, .header-nav-right { display: none !important; }
+/* Ensure high stacking to avoid overlays */
+.kmk-navbar{ z-index: 99999 !important; }
+/* responsive: hide pill on small screens, show hamburger */
+@media (max-width:880px){
+  .kmk-pill{ display: none !important; }
+  .kmk-hamburger{ display: flex !important; }
+}

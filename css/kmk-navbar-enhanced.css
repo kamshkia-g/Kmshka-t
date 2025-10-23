@@ -1,0 +1,108 @@
+/* Kamishka - Enhanced Glassy Navbar (metallic sheen + stronger blur) */
+:root{
+  --kmk-primary-1: #52835f;
+  --kmk-accent: #00a56c;
+  --kmk-text: #ffffff;
+}
+
+/* Base navbar */
+.kmk-navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  background: transparent;
+  transition: height 260ms cubic-bezier(.2,.9,.2,1), background-color 260ms ease, box-shadow 260ms ease;
+  pointer-events: auto;
+}
+
+/* container */
+.kmk-container{
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 22px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Brand on the right */
+.kmk-brand{ position: absolute; right: 18px; top:50%; transform: translateY(-50%); display:flex; align-items:center; gap:8px; }
+.kmk-logo{ height:44px; display:block; }
+
+/* Hamburger on left for mobile */
+.kmk-hamburger{ position:absolute; left:14px; top:50%; transform:translateY(-50%); display:none; background:transparent; border:none; cursor:pointer; width:46px; height:40px; align-items:center; justify-content:center; }
+.kmk-hamburger span{ display:block; height:3px; width:26px; border-radius:3px; background:var(--kmk-text); margin:4px 0; }
+
+/* Pill: glass + metallic sheen */
+.kmk-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:18px;
+  padding:12px 26px;
+  border-radius:999px;
+  position:relative;
+  overflow:hidden;
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(82,131,95,0.04));
+  box-shadow: 0 10px 30px rgba(0,0,0,0.16), inset 0 1px 0 rgba(255,255,255,0.02);
+  transition: background 260ms ease, transform 260ms ease, box-shadow 260ms ease;
+}
+
+/* metallic sheen overlay */
+.kmk-pill::before{
+  content: '';
+  position: absolute;
+  left: -40%;
+  top: -40%;
+  width: 60%;
+  height: 200%;
+  transform: rotate(-20deg);
+  background: linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+  filter: blur(10px);
+  opacity: 0.45;
+  transition: transform 900ms ease, opacity 400ms ease;
+  pointer-events: none;
+}
+.kmk-pill:hover::before{ transform: translateX(60%) rotate(-20deg); opacity:0.6; }
+
+.kmk-pill .kmk-nav-list{ display:flex; gap:20px; list-style:none; margin:0; padding:0; direction: rtl; align-items:center; }
+.kmk-pill .kmk-nav-list a{
+  color:var(--kmk-text);
+  text-decoration:none;
+  font-family:'Rubik',sans-serif;
+  font-weight:500;
+  padding:8px 10px;
+  border-radius:8px;
+  transition: transform 180ms ease, color 160ms ease, background 160ms ease;
+}
+.kmk-pill .kmk-nav-list a:hover,
+.kmk-pill .kmk-nav-list a:focus{
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.04);
+  color: var(--kmk-text);
+  outline: none;
+}
+
+/* Scrolled state: smaller navbar and darker, stronger pill */
+.kmk-navbar.scrolled{ height:56px; box-shadow: 0 12px 36px rgba(0,0,0,0.28); }
+.kmk-navbar.scrolled .kmk-pill{ background: linear-gradient(180deg, rgba(82,131,95,0.94), rgba(0,0,0,0.06)); box-shadow: 0 12px 36px rgba(0,0,0,0.32); }
+.kmk-navbar.scrolled .kmk-pill::before{ opacity:0.18; transform: translateX(40%) rotate(-20deg); filter: blur(6px); }
+
+/* Responsive */
+@media (max-width: 880px){
+  .kmk-hamburger{ display:flex; }
+  .kmk-pill{ display:none; }
+  .kmk-brand{ right: 14px; }
+}
+
+/* Accessibility focus */
+.kmk-pill .kmk-nav-list a:focus{ outline:3px solid rgba(255,255,255,0.12); outline-offset:3px; }

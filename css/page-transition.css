@@ -1,0 +1,23 @@
+/* Page transition CSS - fade out/in overlay */
+.kmk-page-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.02);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 360ms ease;
+  z-index: 99998;
+  backdrop-filter: blur(2px);
+}
+body.is-transitioning .kmk-page-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* Also fade content slightly for nicer effect */
+body.is-transitioning .site-main, body.is-transitioning main, body.is-transitioning .hero {
+  transition: opacity 320ms ease, transform 320ms ease;
+  opacity: 0.18;
+  transform: translateY(6px);
+}
+/* Ensure body initial state (hide flash) */
+body { transition: background-color 200ms ease; }
