@@ -103,3 +103,11 @@ body{
 .kmk-flat-list a:hover{ transform:translateY(-3px); background: rgba(255,255,255,0.04); }
 @media (max-width:880px){ .kmk-flat-list{ display:none; } .kmk-brand{ right:14px; } .kmk-navbar{ height:56px; } }
 body{ padding-top:86px !important; } /* ensure content not hidden behind fixed navbar */
+
+
+/* KMK FIX: reduce top spacing */
+
+/* KMK FIX: reduce top spacing below navbar for all pages */
+body { padding-top: 64px !important; }
+.site-main, main, .hero, .kmk-courses-hero { margin-top: 0 !important; padding-top: 12px !important; }
+.kmk-navbar{ height: 64px !important; }
