@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title_en": "UI/UX Masterclass",
+    "title_ar": "ماستر كلاس UI/UX",
+    "category": "تصميم",
+    "coupon": "KAM20",
+    "url": "https://udemy.com/course/ui-ux-masterclass"
+  },
+  {
+    "id": 2,
+    "title_en": "Python for Everybody",
+    "title_ar": "بايثون للجميع",
+    "category": "برمجة",
+    "coupon": "PY50",
+    "url": "https://udemy.com/course/python-for-everybody"
+  },
+  {
+    "id": 3,
+    "title_en": "Photoshop Essentials",
+    "title_ar": "أساسيات الفوتوشوب",
+    "category": "تصميم",
+    "coupon": "PS10",
+    "url": "https://udemy.com/course/photoshop-essentials"
+  },
+  {
+    "id": 4,
+    "title_en": "Digital Marketing 2025",
+    "title_ar": "التسويق الرقمي 2025",
+    "category": "تسويق",
+    "coupon": "DM30",
+    "url": "https://udemy.com/course/digital-marketing-2025"
+  },
+  {
+    "id": 5,
+    "title_en": "React - The Complete Guide",
+    "title_ar": "ريأكت - الدليل الكامل",
+    "category": "برمجة",
+    "coupon": "REACT15",
+    "url": "https://udemy.com/course/react-complete"
+  },
+  {
+    "id": 6,
+    "title_en": "Illustrator for Beginners",
+    "title_ar": "إليستريتور للمبتدئين",
+    "category": "تصميم",
+    "coupon": "IL30",
+    "url": "https://udemy.com/course/illustrator-beginners"
+  },
+  {
+    "id": 7,
+    "title_en": "Excel to Insights",
+    "title_ar": "إكسل للتحليلات",
+    "category": "تحليل بيانات",
+    "coupon": "XL25",
+    "url": "https://udemy.com/course/excel-to-insights"
+  },
+  {
+    "id": 8,
+    "title_en": "Complete Freelancing Bootcamp",
+    "title_ar": "بوتكامب العمل الحر",
+    "category": "ريادة",
+    "coupon": "FREEL10",
+    "url": "https://udemy.com/course/freelance-bootcamp"
+  },
+  {
+    "id": 9,
+    "title_en": "Node.js API Development",
+    "title_ar": "تطوير APIs بـ Node.js",
+    "category": "برمجة",
+    "coupon": "NODE20",
+    "url": "https://udemy.com/course/nodejs-api"
+  },
+  {
+    "id": 10,
+    "title_en": "Photography Lighting",
+    "title_ar": "إضاءة التصوير الفوتوغرافي",
+    "category": "تصوير",
+    "coupon": "PHOTO5",
+    "url": "https://udemy.com/course/photography-lighting"
+  },
+  {
+    "id": 11,
+    "title_en": "SEO Strategy 2025",
+    "title_ar": "استراتيجية السيو 2025",
+    "category": "تسويق",
+    "coupon": "SEO40",
+    "url": "https://udemy.com/course/seo-strategy"
+  },
+  {
+    "id": 12,
+    "title_en": "Django Web Projects",
+    "title_ar": "مشاريع Django",
+    "category": "برمجة",
+    "coupon": "DJANGO12",
+    "url": "https://udemy.com/course/django-projects"
+  },
+  {
+    "id": 13,
+    "title_en": "Creative Writing",
+    "title_ar": "الكتابة الإبداعية",
+    "category": "كتابة",
+    "coupon": "WRITE8",
+    "url": "https://udemy.com/course/creative-writing"
+  },
+  {
+    "id": 14,
+    "title_en": "Adobe After Effects",
+    "title_ar": "أدوبي آفتر إفكتس",
+    "category": "مونتاج",
+    "coupon": "AE22",
+    "url": "https://udemy.com/course/after-effects"
+  },
+  {
+    "id": 15,
+    "title_en": "Social Media Ads",
+    "title_ar": "إعلانات السوشيال ميديا",
+    "category": "تسويق",
+    "coupon": "ADS18",
+    "url": "https://udemy.com/course/social-ads"
+  }
+]
