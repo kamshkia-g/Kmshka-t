@@ -1,114 +1,153 @@
-// kamishka courses page script
-(async function(){
-  const DATA_URL = 'assets/data/udemy_courses.json';
-  const PAGE_LINK = 'courses-udemy.html';
-  const PER_PAGE = 9;
 
-  let data = await fetch(DATA_URL).then(r=>r.json()).catch(()=>[]);
-  let filtered = data.slice();
-  let current = 0;
-
-  const grid = document.querySelector('.kmk-grid');
-  const searchInput = document.querySelector('#kmk-search');
-  const filtersWrap = document.querySelector('.kmk-filters');
-  const loadMoreBtn = document.querySelector('#kmk-loadmore');
-  const noMore = document.querySelector('#kmk-no-more');
-
-  // build filter buttons from categories
-  const cats = Array.from(new Set(data.map(d=>d.category)));
-  cats.unshift('الكل');
-  cats.forEach(cat=>{
-    const btn = document.createElement('button');
-    btn.className = 'kmk-filter-btn' + (cat==='الكل' ? ' active' : '');
-    btn.textContent = cat;
-    btn.dataset.cat = cat;
-    btn.addEventListener('click', ()=>{
-      document.querySelectorAll('.kmk-filter-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      applyFilters();
-    });
-    filtersWrap.appendChild(btn);
+// KMK_APPLY_FILTER: central filter function
+function kmk_applyFilterCat(cat){
+  const q = (cat||'').toString().trim().toLowerCase();
+  document.querySelectorAll('.kmk-grid .kmk-card').forEach(card=>{
+    const cardCat = (card.dataset.category||'').toLowerCase();
+    const txt = (card.textContent||'').toLowerCase();
+    if(!q || q==='الكل' || q === ''){ card.style.display=''; return; }
+    if(cardCat && cardCat.includes(q)){ card.style.display=''; return; }
+    if(txt.includes(q)){ card.style.display=''; return; }
+    card.style.display='none';
   });
+}
+// expose globally
+window.kmk_applyFilterCat = kmk_applyFilterCat;
 
-  function renderItems(reset=false){
-    if(reset){ grid.innerHTML=''; current=0; }
-    const slice = filtered.slice(current, current+PER_PAGE);
-    slice.forEach(item=>{
-      const el = document.createElement('article');
-      el.className = 'kmk-card';
-      el.innerHTML = `
-        <div>
-          <h3 class="title-en">${escapeHtml(item.title_en)}</h3>
-          <div class="title-ar">${escapeHtml(item.title_ar)}</div>
-        </div>
-        <div class="actions">
-          <button class="kmk-btn kmk-small share-btn" data-url="${item.url}">شارك الكورس</button>
-          <button class="kmk-btn kmk-small copy-btn" data-code="${item.coupon}">انسخ الكود</button>
-          <a class="kmk-btn primary" href="${item.url}" target="_blank" rel="noopener">اذهب للكورس</a>
-        </div>
-      `;
-      grid.appendChild(el);
-    });
-    current += slice.length;
-    if(current >= filtered.length){ loadMoreBtn.style.display='none'; noMore.style.display='block'; } else { loadMoreBtn.style.display='inline-flex'; noMore.style.display='none'; }
-    attachCardHandlers();
-  }
 
-  function applyFilters(){
-    const q = (searchInput.value||'').trim().toLowerCase();
-    const active = document.querySelector('.kmk-filter-btn.active').dataset.cat;
-    filtered = data.filter(d=>{
-      const matchQ = !q || d.title_en.toLowerCase().includes(q) || d.title_ar.toLowerCase().includes(q);
-      const matchCat = (active==='الكل') || (d.category===active);
-      return matchQ && matchCat;
+// KMK_DYNAMIC_FILTERS: build filter buttons from udemy_courses.json
+(async function kmk_build_filters(){
+  try{
+    const res = await fetch('assets/data/udemy_courses.json');
+    if(!res.ok) return;
+    const data = await res.json();
+    const cats = Array.from(new Set(data.map(d=> (d.category||'').trim() ).filter(Boolean))).sort();
+    const wrap = document.querySelector('.kmk-filters');
+    if(!wrap) return;
+    // clear existing
+    wrap.innerHTML = '';
+    // add 'الكل'
+    const allBtn = document.createElement('button');
+    allBtn.className = 'kmk-filter-btn active';
+    allBtn.dataset.cat = 'الكل';
+    allBtn.textContent = 'الكل';
+    wrap.appendChild(allBtn);
+    cats.forEach(cat=>{
+      const b = document.createElement('button');
+      b.className = 'kmk-filter-btn';
+      b.dataset.cat = cat;
+      b.textContent = cat;
+      wrap.appendChild(b);
     });
-    renderItems(true);
-  }
+    // attach handlers (existing filter logic will pick up clicks)
+    wrap.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.kmk-filter-btn');
+      if(!btn) return;
+      wrap.querySelectorAll('.kmk-filter-btn').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+      // trigger existing filter code by dispatching click (or call apply logic if available)
+      kmk_applyFilterCat(btn.dataset.cat || '');
+    });
+  }catch(e){ console.error(e); }
+})(); // end dynamic filters
 
-  function attachCardHandlers(){
-    document.querySelectorAll('.share-btn').forEach(b=>{
-      if(b.dataset.bound) return;
-      b.dataset.bound = '1';
-      b.addEventListener('click', async ()=>{
-        const url = b.dataset.url || PAGE_LINK;
-        if(navigator.share){
-          try{ await navigator.share({ title: 'دورة من كمشكاة', url }); }catch(e){ copyText(url); showToast('تم نسخ الرابط'); }
-        } else {
-          copyText(url); showToast('تم نسخ الرابط');
-        }
-      });
-    });
-    document.querySelectorAll('.copy-btn').forEach(b=>{
-      if(b.dataset.bound) return;
-      b.dataset.bound = '1';
-      b.addEventListener('click', ()=>{
-        const code = b.dataset.code || '';
-        copyText(code);
-        showToast('تم نسخ الكود');
-      });
-    });
-  }
 
-  function copyText(t){
-    try{ navigator.clipboard.writeText(t); }catch(e){ const ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+// Simple renderer for courses-udemy: fetch JSON and render into .kmk-grid
+(async function(){
+  const GRID = document.querySelector('.kmk-grid');
+  if(!GRID) return;
+  const DATA_URL = 'assets/data/udemy_courses.json';
+  let data = [];
+  try{ data = await fetch(DATA_URL).then(r=>r.json()); }catch(e){ console.error('failed load json', e); }
+  if(!Array.isArray(data) || data.length===0) {
+    GRID.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:rgba(0,0,0,0.6)">لا توجد دورات لعرضها</div>';
+    return;
   }
+  GRID.innerHTML = ''; // clear placeholders
+  data.forEach(function(item){
+    const el = document.createElement('article');
+    el.className = 'kmk-card';
+    el.innerHTML = `
+      <div>
+        <div class="title-en">${escapeHtml(item.title_en || '')}</div>
+        <div class="title-ar">${escapeHtml(item.title_ar || '')}</div>
+      </div>
+      <div class="actions">
+        <button class="kmk-btn share-btn" data-url="${escapeAttr(item.url)}">شارك الكورس</button>
+        <button class="kmk-btn copy-btn" data-code="${escapeAttr(item.coupon||'')}">انسخ الكود</button>
+        <a class="kmk-btn primary" href="${escapeAttr(item.url)}" target="_blank" rel="noopener">اذهب للكورس</a>
+      </div>
+    `;
+    GRID.appendChild(el);
+  });
+  // attach handlers
+  document.querySelectorAll('.share-btn').forEach(b=> b.addEventListener('click', ()=> {
+    const url = b.dataset.url || location.href;
+    if(navigator.share) navigator.share({url, title:'دورة'}).catch(()=>navigator.clipboard.writeText(url));
+    else navigator.clipboard.writeText(url);
+  }));
+  document.querySelectorAll('.copy-btn').forEach(b=> b.addEventListener('click', ()=> {
+    const code = b.dataset.code || '';
+    navigator.clipboard.writeText(code).then(()=>{}).catch(()=>{});
+  }));
 
   function escapeHtml(s){ return (''+s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+  function escapeAttr(s){ return (''+s).replace(/"/g,'&quot;'); }
+})();
 
-  function showToast(msg){
-    let t = document.querySelector('.kmk-toast');
-    if(!t){ t = document.createElement('div'); t.className='kmk-toast'; t.style.position='fixed'; t.style.right='18px'; t.style.bottom='18px'; t.style.padding='10px 14px'; t.style.background='rgba(0,0,0,0.7)'; t.style.color='#fff'; t.style.borderRadius='8px'; t.style.zIndex=999999; document.body.appendChild(t); }
-    t.textContent = msg; t.style.opacity='1';
-    setTimeout(()=>{ t.style.opacity='0'; },1500);
+/* KMK search fix */
+
+// Ensure search input filters visible cards
+document.addEventListener('DOMContentLoaded', function(){
+  const input = document.getElementById('kmk-search');
+  if(!input) return;
+  input.addEventListener('input', function(){
+    const q = this.value.trim().toLowerCase();
+    document.querySelectorAll('.kmk-grid .kmk-card').forEach(card=>{
+      const txt = (card.textContent||'').toLowerCase();
+      card.style.display = q && !txt.includes(q) ? 'none' : '';
+    });
+  });
+});
+
+
+/* KMK filter fix */
+
+/* KMK filter fix: delegate clicks and filter rendered cards */
+document.addEventListener('DOMContentLoaded', function(){
+  function applyFilterCat(cat){
+    const cards = document.querySelectorAll('.kmk-grid .kmk-card');
+    cards.forEach(card=>{
+      const txt = (card.textContent||'').toLowerCase();
+      if(!cat || cat==='الكل'){ card.style.display=''; return; }
+      // check category text inside card (we expect a data-category or category in text)
+      const catAttr = card.dataset.category || '';
+      if(catAttr && catAttr.toLowerCase()===cat.toLowerCase()){ card.style.display=''; }
+      else if(txt.includes(cat.toLowerCase())){ card.style.display=''; }
+      else card.style.display='none';
+    });
   }
+  document.querySelectorAll('.kmk-filter-btn').forEach(btn=>{
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.kmk-filter-btn').forEach(b=>b.classList.remove('active'));
+      this.classList.add('active');
+      applyFilterCat(this.dataset.cat || this.textContent.trim());
+    });
+  });
+});
 
-  // search input handler (debounced)
-  let dt;
-  searchInput.addEventListener('input', ()=>{ clearTimeout(dt); dt=setTimeout(()=>applyFilters(),250); });
 
-  loadMoreBtn.addEventListener('click', ()=>{ renderItems(); });
 
-  // initial render
-  renderItems(true);
-
-})(); // end script
+// KMK_SEARCH_SAFE: ensure search input filters cards (safe rebind)
+document.addEventListener('DOMContentLoaded', function(){
+  const input = document.getElementById('kmk-search');
+  if(!input) return;
+  input.removeEventListener && input.removeEventListener('input', ()=>{});
+  input.addEventListener('input', function(){
+    const q = this.value.trim().toLowerCase();
+    document.querySelectorAll('.kmk-grid .kmk-card').forEach(card=>{
+      const txt = (card.textContent||'').toLowerCase();
+      card.style.display = q && !txt.includes(q) ? 'none' : '';
+    });
+  });
+});

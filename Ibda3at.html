@@ -1,34 +1,30 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>الرئيسية - موقع كمشكاة</title>
-  <link rel="icon" href="assets/images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>إبداعات - كمشكاة</title>
   <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-    <!-- kmk-inline-navbar-style -->
-    <style>
-
-/* INLINE OVERRIDE: force glassy navbar */
-.kmk-navbar{ background: rgba(255,255,255,0.02) !important; backdrop-filter: blur(14px) !important; -webkit-backdrop-filter: blur(14px) !important; z-index: 999999 !important; box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important; }
-.kmk-pill{ background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)) !important; }
-header, .site-header, .kmk-navbar, .kmk-pill{ background-color: transparent !important; }
-body > *:not(header){ margin-top: 76px !important; } /* ensure content not overlapped */
-
-    </style>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/ibda3at-masonry.css">
+  <style>
+  /* Enhanced masonry layout and 3-dot menu styles */
+  .kmk-gallery-masonry-wrapper{ max-width:1200px; margin:18px auto; padding:12px; }
+  .kmk-masonry{ column-count:4; column-gap:12px; }
+  @media (max-width:1400px){ .kmk-masonry{ column-count:4; } }
+  @media (max-width:1100px){ .kmk-masonry{ column-count:3; } }
+  @media (max-width:900px){ .kmk-masonry{ column-count:2; } }
+  @media (max-width:600px){ .kmk-masonry{ column-count:1; } }
+  .kmk-masonry-item{ display:inline-block; width:100%; margin:0 0 12px; break-inside:avoid; position:relative; border-radius:10px; overflow:hidden; background:#fff; box-shadow:0 8px 24px rgba(0,0,0,0.06); }
+  .kmk-masonry-item img{ width:100%; height:auto; display:block; }
+  .kmk-masonry-item .meta{ padding:8px; font-size:14px; color:#222; background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85)); }
+  .kmk-masonry-item .controls{ position:absolute; top:8px; left:8px; display:flex; gap:6px; }
+  .kmk-dot-btn{ background:rgba(0,0,0,0.5); color:#fff; border:none; padding:6px 8px; border-radius:8px; cursor:pointer; }
+  .kmk-menu{ position:absolute; top:40px; left:8px; background:#fff; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,0.12); display:none; z-index:30; }
+  .kmk-menu button{ display:block; width:100%; padding:8px 12px; border:none; background:transparent; text-align:right; cursor:pointer; }
+  .kmk-fav{ position:absolute; bottom:10px; left:10px; background:linear-gradient(90deg,#ff5a7a,#ff8da1); color:#fff; border:none; padding:6px 8px; border-radius:999px; cursor:pointer; }
+  </style>
 </head>
-\1\n  <div class="kmk-loader-overlay" aria-hidden="true"><div class="kmk-loader-circle"></div></div>\n
-  <div class=\"kmk-page-overlay\" aria-hidden=\"true\"></div>
-
-
+<body>
 <header class="kmk-navbar" role="banner">
   <div class="kmk-container">
     <a class="kmk-brand" href="/"><img src="assets/logo.png" alt="كمشكاة" class="kmk-logo"/></a>
@@ -48,43 +44,21 @@ body > *:not(header){ margin-top: 76px !important; } /* ensure content not overl
     </nav>
   </div>
 </header>
-
-
-
-
-
-
-
-
-
-
-
-
-<header class="site-header" role="banner" aria-label="شريط التنقل">
-  <div class="brand">
-    <img src="assets/images/logo.png" alt="شعار كمشكاة" onerror="this.style.display='none'"/>
-    <strong>كمشكاة</strong>
-  </div>
-
-  
-</header>
 <main class="site-main">
-
-  <section class="hero small-hero" aria-labelledby="hero-title">
-    <div class="hero-glass">
-      <h1 id="hero-title" class="text-gradient">استعن بالله ولا تعجز</h1>
-      <p class="lead">منصة عربية</p>
+  <section class="kmk-ibda3at-hero">
+    <h1 style="text-align:center">إبداعات</h1>
+    <div class="kmk-gallery-masonry-wrapper">
+      <div style="display:flex; justify-content:center; gap:8px; margin-bottom:12px;">
+        <button id="kmk-filter-all" class="kmk-btn active">الكل</button>
+        <button data-cat="تصميم" class="kmk-btn">تصميم</button>
+        <button data-cat="تصوير" class="kmk-btn">تصوير</button>
+        <button data-cat="أعمال" class="kmk-btn">أعمال</button>
+      </div>
+      <div class="kmk-masonry" id="kmk-masonry" aria-live="polite"></div>
+      <div style="text-align:center; margin-top:12px;"><button id="kmk-masonry-loadmore" class="kmk-btn">اعرض المزيد</button></div>
     </div>
   </section>
-
-<p>صفحة إبداعات (مشروعات/نماذج).</p>
 </main>
-<footer class="site-footer">© 2025 كمشكاة — جميع الحقوق محفوظة</footer>
-<script src="assets/js/main.js"></script>
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
-    <script src="assets/js/main.js" defer></script>
+<script src="assets/js/ibda3at-masonry-v3.js" defer></script>
 </body>
 </html>

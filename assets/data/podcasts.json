@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "title": "Podcast Episode 1",
+    "description": "Short description for episode 1.",
+    "category": "Self-development",
+    "local_audio": "assets/audio/podcast_1.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 2,
+    "title": "Podcast Episode 2",
+    "description": "Short description for episode 2.",
+    "category": "Time Management",
+    "local_audio": "assets/audio/podcast_2.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 3,
+    "title": "Podcast Episode 3",
+    "description": "Short description for episode 3.",
+    "category": "Religion",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 4,
+    "title": "Podcast Episode 4",
+    "description": "Short description for episode 4.",
+    "category": "Psychology",
+    "local_audio": "assets/audio/podcast_4.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 5,
+    "title": "Podcast Episode 5",
+    "description": "Short description for episode 5.",
+    "category": "Family",
+    "local_audio": "assets/audio/podcast_5.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 6,
+    "title": "Podcast Episode 6",
+    "description": "Short description for episode 6.",
+    "category": "Design",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 7,
+    "title": "Podcast Episode 7",
+    "description": "Short description for episode 7.",
+    "category": "Programming",
+    "local_audio": "assets/audio/podcast_7.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 8,
+    "title": "Podcast Episode 8",
+    "description": "Short description for episode 8.",
+    "category": "Marketing",
+    "local_audio": "assets/audio/podcast_8.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 9,
+    "title": "Podcast Episode 9",
+    "description": "Short description for episode 9.",
+    "category": "Business",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 10,
+    "title": "Podcast Episode 10",
+    "description": "Short description for episode 10.",
+    "category": "Health",
+    "local_audio": "assets/audio/podcast_10.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 11,
+    "title": "Podcast Episode 11",
+    "description": "Short description for episode 11.",
+    "category": "Education",
+    "local_audio": "assets/audio/podcast_11.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 12,
+    "title": "Podcast Episode 12",
+    "description": "Short description for episode 12.",
+    "category": "Career",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 13,
+    "title": "Podcast Episode 13",
+    "description": "Short description for episode 13.",
+    "category": "Creativity",
+    "local_audio": "assets/audio/podcast_13.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 14,
+    "title": "Podcast Episode 14",
+    "description": "Short description for episode 14.",
+    "category": "Productivity",
+    "local_audio": "assets/audio/podcast_14.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 15,
+    "title": "Podcast Episode 15",
+    "description": "Short description for episode 15.",
+    "category": "Leadership",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 16,
+    "title": "Podcast Episode 16",
+    "description": "Short description for episode 16.",
+    "category": "Economy",
+    "local_audio": "assets/audio/podcast_16.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 17,
+    "title": "Podcast Episode 17",
+    "description": "Short description for episode 17.",
+    "category": "Science",
+    "local_audio": "assets/audio/podcast_17.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 18,
+    "title": "Podcast Episode 18",
+    "description": "Short description for episode 18.",
+    "category": "Culture",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 19,
+    "title": "Podcast Episode 19",
+    "description": "Short description for episode 19.",
+    "category": "Entertainment",
+    "local_audio": "assets/audio/podcast_19.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 20,
+    "title": "Podcast Episode 20",
+    "description": "Short description for episode 20.",
+    "category": "Skills",
+    "local_audio": "assets/audio/podcast_20.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 21,
+    "title": "Podcast Episode 21",
+    "description": "Short description for episode 21.",
+    "category": "Self-development",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 22,
+    "title": "Podcast Episode 22",
+    "description": "Short description for episode 22.",
+    "category": "Time Management",
+    "local_audio": "assets/audio/podcast_22.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 23,
+    "title": "Podcast Episode 23",
+    "description": "Short description for episode 23.",
+    "category": "Religion",
+    "local_audio": "assets/audio/podcast_23.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 24,
+    "title": "Podcast Episode 24",
+    "description": "Short description for episode 24.",
+    "category": "Psychology",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 25,
+    "title": "Podcast Episode 25",
+    "description": "Short description for episode 25.",
+    "category": "Family",
+    "local_audio": "assets/audio/podcast_25.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 26,
+    "title": "Podcast Episode 26",
+    "description": "Short description for episode 26.",
+    "category": "Design",
+    "local_audio": "assets/audio/podcast_26.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 27,
+    "title": "Podcast Episode 27",
+    "description": "Short description for episode 27.",
+    "category": "Programming",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 28,
+    "title": "Podcast Episode 28",
+    "description": "Short description for episode 28.",
+    "category": "Marketing",
+    "local_audio": "assets/audio/podcast_28.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 29,
+    "title": "Podcast Episode 29",
+    "description": "Short description for episode 29.",
+    "category": "Business",
+    "local_audio": "assets/audio/podcast_29.mp3",
+    "youtube": "",
+    "date": "2025-01-01"
+  },
+  {
+    "id": 30,
+    "title": "Podcast Episode 30",
+    "description": "Short description for episode 30.",
+    "category": "Health",
+    "local_audio": "",
+    "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "date": "2025-01-01"
+  }
+]
